@@ -307,8 +307,50 @@ body {
     font-family: "MontserratMedium", sans-serif;
     font-size: 1.33em; }
     .aside-contacts__phones {
-      margin: 2vw 0 3vw;
+      margin: 2vw 0;
       font-size: 1.5em; }
+  .aside-banner {
+    display: block; }
+    .aside-banner img {
+      width: 100%; }
+  .aside-converter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 5px 15px;
+    font-size: 1.2em; }
+    .aside-converter span {
+      margin: 0 15px; }
+  .aside-weather {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .aside-weather__btn {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+      width: 190px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: #fff;
+      line-height: 30px;
+      color: #000; }
+
+.footer p {
+  margin: 1vw 0; }
 
 @media screen and (min-width: 768px) {
   .header {
