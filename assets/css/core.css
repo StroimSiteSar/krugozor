@@ -352,6 +352,33 @@ body {
 .footer p {
   margin: 1vw 0; }
 
+/* ============================== homepage css ============================= */
+.home-slider img {
+  width: 100%; }
+.home-row {
+  margin-top: 15px;
+  margin-bottom: 30px; }
+  .home-row:nth-child(2n) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse; }
+  .home-row__item {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover; }
+    .home-row__item-big {
+      height: 100%;
+      min-height: 300px; }
+    .home-row__item-small {
+      margin: 15px 0;
+      height: 30%;
+      min-height: 90px; }
+      .home-row__item-small:nth-child(2) {
+        margin: 5% 0; }
+    .home-row__item img {
+      width: 100%; }
+
 @media screen and (min-width: 768px) {
   .header {
     background-position: center;
@@ -378,4 +405,13 @@ body {
 
   .main {
     margin: 20px 0;
-    overflow: hidden; } }
+    overflow: hidden; }
+
+  .home-row {
+    margin-top: 15px;
+    margin-bottom: 30px; }
+    .home-row__item-small {
+      margin: 0;
+      min-height: 150px; }
+      .home-row__item-small:nth-child(2) {
+        margin: 15px 0; } }
