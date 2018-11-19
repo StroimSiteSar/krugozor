@@ -24,13 +24,25 @@ $extral: 1200px;
 }
 @media screen and (min-width: $medium) {
     .header {
+        background-position: center;
+        background-size: auto;
+        background-size: cover;
+        
         &-list {
-
+            margin-top: 50px;
+            padding: 0;
+            height: auto;
+            overflow: visible;
+            
             &__item {
                 min-width: 10%;
 
                 &-img {
                     transform: translateY(-50%);
+                }
+                
+                &-title {
+                    transform: translateY(-25%);
                 }
 
                 &:hover {
@@ -39,7 +51,16 @@ $extral: 1200px;
                     }
                 }
             }
+            
+            &__open {
+                display: none;
+            } 
         }
+    }
+    
+    .main {
+        margin: 20px 0;
+        overflow: hidden;
     }
 }
 @media screen and (min-width: $large) {

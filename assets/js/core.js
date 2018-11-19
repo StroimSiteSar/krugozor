@@ -107,5 +107,15 @@ function EasyCounter(number, display, btnPlus, btnMinus) {
 
 //Для всех страниц
 document.addEventListener('DOMContentLoaded', function () {
+    let topNavbar = document.querySelector('.header-list');
+    let topNavbarBtn = document.querySelector('.header-list__open');
+    topNavbarBtn.status = false;
     
+    topNavbarBtn.onclick = function() {
+        this.status = !this.status;
+        this.status ? this.innerText = 'Скрыть' : this.innerText = 'Меню';
+        topNavbar.classList.toggle('active');
+    }
+    
+    console.dir(topNavbarBtn);
 });

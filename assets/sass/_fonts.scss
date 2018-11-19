@@ -115,6 +115,42 @@
     font-style: normal;
     font-weight: normal;
 }
+@font-face {
+    font-family: "MontserratBold";
+    src: url("../fonts/MontserratBold/montserrat-bold.eot");
+    src: url("../fonts/MontserratBold/montserrat-bold.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/MontserratBold/montserrat-bold.woff") format("woff"),
+    url("../fonts/MontserratBold/montserrat-bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "MontserratLight";
+    src: url("../fonts/MontserratLight/montserrat-light.eot");
+    src: url("../fonts/MontserratLight/montserrat-light.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/MontserratLight/montserrat-light.woff") format("woff"),
+    url("../fonts/MontserratLight/montserrat-light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "MontserratMedium";
+    src: url("../fonts/MontserratMedium/montserrat-medium.eot");
+    src: url("../fonts/MontserratMedium/montserrat-medium.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/MontserratMedium/montserrat-medium.woff") format("woff"),
+    url("../fonts/MontserratMedium/montserrat-medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "MontserratRegular";
+    src: url("../fonts/MontserratRegular/montserrat-regular.eot");
+    src: url("../fonts/MontserratRegular/montserrat-regular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/MontserratRegular/montserrat-regular.woff") format("woff"),
+    url("../fonts/MontserratRegular/montserrat-regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
 
 $Neucha: "Neucha", cursive;
 $RobSR: "RobotoSlabRegular", sans-serif;
@@ -129,6 +165,10 @@ $OS-L: "OpenSansLight", sans-serif;
 $OS-B: "OpenSansBold", sans-serif;
 $OS-SB: "OpenSansSemibold", sans-serif;
 $OS-EB: "OpenSansExtrabold", sans-serif;
+$Ms-B: "MontserratBold", sans-serif;
+$Ms-M: "MontserratMedium", sans-serif;
+$Ms-R: "MontserratRegular", sans-serif;
+$Ms-L: "MontserratLight", sans-serif;
 
 $mobile: 425px;
 $small: 576px;

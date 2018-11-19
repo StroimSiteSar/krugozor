@@ -68,21 +68,21 @@
 
 h1 {
     margin: 1em 0;
-    font-family: $OS-B;
+    font-family: $Ms-B;
     font-size: 2em;
 }
 
 h2 {
     text-transform: uppercase;
     margin: 1em 0;
-    font-family: $OS-B;
+    font-family: $Ms-B;
     font-size: 1.8em;
 }
 
 h3 {
     text-transform: uppercase;
     margin: 1em 0;
-    font-family: $OS-B;
+    font-family: $Ms-B;
     font-size: 1.6em;
     position: relative;
     z-index: 200;
@@ -90,7 +90,8 @@ h3 {
 
 body {
     @include fontSize12;
-    font-family: $OS-R;
+    min-height: 100vh;
+    font-family: $Ms-R;
     background-image: linear-gradient(to bottom, #d8dee5 0%, #a8d0e3 100%);
     
     a {
@@ -123,8 +124,8 @@ body {
 .header {
     padding-top: 15px;
     background-image: url(../img/header_bgi.jpg);
-    background-position: center;
-    background-size: cover;
+    background-position: top;
+    background-size: 100% 136px;
     background-repeat: no-repeat;
     position: relative;
     z-index: 0;
@@ -141,10 +142,14 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin-top: 50px;
+        margin-top: 15px;
         background-color: $cl_aquablue-op;
         position: relative;
         z-index: 2;
+        padding: 0;
+        height: 0px;
+        transition: .3s;
+        overflow: hidden;
         
         &__item {
             display: flex;
@@ -171,12 +176,83 @@ body {
             
             &:hover {
                 .header-list__item-title {
-                    font-family: $OS-SB;
+                    font-family: $Ms-M;
                 }
             }
+        }
+        
+        &.active {
+            height: 280px;
+            padding: 15px 0;
+        }
+        
+        &__open {
+            background-color: $cl_aquablue-op;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            border: 1px solid $cl_white;
+            border-left: none;
+            border-right: none;
+            color: $cl_white;
+            outline: none;
         }
     }
 }
 
+.main {
+    margin: 40px 0 20px;
+    overflow: hidden;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: $cl_white;
+    
+    &>*{
+        width: 100%;
+        background-color: $cl_aquablue-op;
+        
+        &:nth-child(2n) {
+            margin: 2vw 0;
+        }
+    }
+    
+    &-nav {
+        padding: 15px 0;
+        
+        &__item {
+            list-style-type: none;
+            
+            &-link {
+                padding: 0 10px 0 20px;
+                margin: 5px 0;
+                display: block;
+                color: $cl_white;
+                font-size: 1.5em;
+                
+                &:hover {
+                    font-family: $Ms-M;
+                }
+            }
+        }
+    }
+    
+    &-contacts {
+        text-align: right;
+        padding: 15px 20px 15px 0;
+        font-family: $Ms-M;
+        font-size: 1.33em;
+        
+        &__phones {
+            margin: 2vw 0 3vw;
+            font-size: 1.5em;
+        }
+    }
+}
 
 @import 'media';

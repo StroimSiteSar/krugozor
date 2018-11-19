@@ -77,6 +77,30 @@
   src: url("../fonts/OpenSansExtrabold/opensans-extrabold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSansExtrabold/opensans-extrabold.woff") format("woff"), url("../fonts/OpenSansExtrabold/opensans-extrabold.ttf") format("truetype");
   font-style: normal;
   font-weight: normal; }
+@font-face {
+  font-family: "MontserratBold";
+  src: url("../fonts/MontserratBold/montserrat-bold.eot");
+  src: url("../fonts/MontserratBold/montserrat-bold.eot?#iefix") format("embedded-opentype"), url("../fonts/MontserratBold/montserrat-bold.woff") format("woff"), url("../fonts/MontserratBold/montserrat-bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+@font-face {
+  font-family: "MontserratLight";
+  src: url("../fonts/MontserratLight/montserrat-light.eot");
+  src: url("../fonts/MontserratLight/montserrat-light.eot?#iefix") format("embedded-opentype"), url("../fonts/MontserratLight/montserrat-light.woff") format("woff"), url("../fonts/MontserratLight/montserrat-light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+@font-face {
+  font-family: "MontserratMedium";
+  src: url("../fonts/MontserratMedium/montserrat-medium.eot");
+  src: url("../fonts/MontserratMedium/montserrat-medium.eot?#iefix") format("embedded-opentype"), url("../fonts/MontserratMedium/montserrat-medium.woff") format("woff"), url("../fonts/MontserratMedium/montserrat-medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+@font-face {
+  font-family: "MontserratRegular";
+  src: url("../fonts/MontserratRegular/montserrat-regular.eot");
+  src: url("../fonts/MontserratRegular/montserrat-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/MontserratRegular/montserrat-regular.woff") format("woff"), url("../fonts/MontserratRegular/montserrat-regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
 /* Библиотека адаптивных шрифтов:
 ---- Для того чтобы задать размер шрифта, необходимо:
 ---- добавить миксин с набором в классу, в виде:
@@ -108,25 +132,26 @@
 
 h1 {
   margin: 1em 0;
-  font-family: "OpenSansBold", sans-serif;
+  font-family: "MontserratBold", sans-serif;
   font-size: 2em; }
 
 h2 {
   text-transform: uppercase;
   margin: 1em 0;
-  font-family: "OpenSansBold", sans-serif;
+  font-family: "MontserratBold", sans-serif;
   font-size: 1.8em; }
 
 h3 {
   text-transform: uppercase;
   margin: 1em 0;
-  font-family: "OpenSansBold", sans-serif;
+  font-family: "MontserratBold", sans-serif;
   font-size: 1.6em;
   position: relative;
   z-index: 200; }
 
 body {
-  font-family: "OpenSansRegular", sans-serif;
+  min-height: 100vh;
+  font-family: "MontserratRegular", sans-serif;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d8dee5), to(#a8d0e3));
   background-image: linear-gradient(to bottom, #d8dee5 0%, #a8d0e3 100%); }
   @media screen and (max-width: 425px) {
@@ -170,8 +195,8 @@ body {
 .header {
   padding-top: 15px;
   background-image: url(../img/header_bgi.jpg);
-  background-position: center;
-  background-size: cover;
+  background-position: top;
+  background-size: 100% 136px;
   background-repeat: no-repeat;
   position: relative;
   z-index: 0; }
@@ -195,10 +220,15 @@ body {
         flex-wrap: wrap;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    margin-top: 50px;
+    margin-top: 15px;
     background-color: rgba(45, 166, 197, 0.75);
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    padding: 0;
+    height: 0px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    overflow: hidden; }
     .header-list__item {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -223,14 +253,87 @@ body {
         color: #fff;
         text-transform: uppercase; }
       .header-list__item:hover .header-list__item-title {
-        font-family: "OpenSansSemibold", sans-serif; }
+        font-family: "MontserratMedium", sans-serif; }
+    .header-list.active {
+      height: 280px;
+      padding: 15px 0; }
+    .header-list__open {
+      background-color: rgba(45, 166, 197, 0.75);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      border: 1px solid #fff;
+      border-left: none;
+      border-right: none;
+      color: #fff;
+      outline: none; }
+
+.main {
+  margin: 40px 0 20px;
+  overflow: hidden; }
+
+.aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  color: #fff; }
+  .aside > * {
+    width: 100%;
+    background-color: rgba(45, 166, 197, 0.75); }
+    .aside > *:nth-child(2n) {
+      margin: 2vw 0; }
+  .aside-nav {
+    padding: 15px 0; }
+    .aside-nav__item {
+      list-style-type: none; }
+      .aside-nav__item-link {
+        padding: 0 10px 0 20px;
+        margin: 5px 0;
+        display: block;
+        color: #fff;
+        font-size: 1.5em; }
+        .aside-nav__item-link:hover {
+          font-family: "MontserratMedium", sans-serif; }
+  .aside-contacts {
+    text-align: right;
+    padding: 15px 20px 15px 0;
+    font-family: "MontserratMedium", sans-serif;
+    font-size: 1.33em; }
+    .aside-contacts__phones {
+      margin: 2vw 0 3vw;
+      font-size: 1.5em; }
 
 @media screen and (min-width: 768px) {
-  .header-list__item {
-    min-width: 10%; }
-    .header-list__item-img {
-      -webkit-transform: translateY(-50%);
-              transform: translateY(-50%); }
-    .header-list__item:hover .header-list__item-img {
-      -webkit-transform: scale(1.6) translateY(-50%);
-              transform: scale(1.6) translateY(-50%); } }
+  .header {
+    background-position: center;
+    background-size: auto;
+    background-size: cover; }
+    .header-list {
+      margin-top: 50px;
+      padding: 0;
+      height: auto;
+      overflow: visible; }
+      .header-list__item {
+        min-width: 10%; }
+        .header-list__item-img {
+          -webkit-transform: translateY(-50%);
+                  transform: translateY(-50%); }
+        .header-list__item-title {
+          -webkit-transform: translateY(-25%);
+                  transform: translateY(-25%); }
+        .header-list__item:hover .header-list__item-img {
+          -webkit-transform: scale(1.6) translateY(-50%);
+                  transform: scale(1.6) translateY(-50%); }
+      .header-list__open {
+        display: none; }
+
+  .main {
+    margin: 20px 0;
+    overflow: hidden; } }

@@ -24,7 +24,6 @@
         <a href="index.html" class="header-logo">
             <img src="assets/img/logo.png" alt="logo">
         </a>
-        <div class="row"></div>
         <div class="header-list">
             <a href="#" class="header-list__item">
                 <span class="header-list__item-img">
@@ -81,13 +80,42 @@
                 <span class="header-list__item-title">НАШИ<br>УСЛУГИ</span>
             </a>
         </div>
+        <button class="header-list__open">Меню</button>
     </header>
     
     <main class="main">
-        <div class="container-fluid">
-            <div class="aside right-aside"></div>
-            <div class="content"></div>
-            <div class="aside left-aside"></div>
+        <div class="row">
+            <aside class="col-12 col-sm-6 col-lg-3 col-xl-2 aside">
+                <ul class="aside-nav">
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">О нас</a></li>
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">Новости</a></li>
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">Акции</a></li>
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">Агенствам</a></li>
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">Туристам</a></li>
+                    <li class="aside-nav__item"><a href="#" class="aside-nav__item-link">Контакты</a></li>
+                </ul>
+                <div class="aside-converter">
+                    <img src="assets/img/converter.png" alt="converter_img">
+                    <span>Конвертер  валют</span>
+                </div>
+                <div class="aside-weather">
+                    <iframe src="#" frameborder="0"></iframe>
+                    <button>поиск погоды</button>
+                </div>
+            </aside>
+            <div class="col-12 order-first col-lg-6 order-lg-2 col-xl-8">
+                <contant class="content">Content</contant>
+            </div>
+            <aside class="col-12 col-sm-6 col-lg-3 order-lg-last col-xl-2 aside">
+                <div class="aside-contacts">
+                    <span>Звоните прямо сейчас!</span>
+                    <div class="aside-contacts__phones">771 — 753<br>+7(8452) 251 — 751<br>255 — 485</div>
+                    <span class="aside-contacts__email">krugozor_saratov@mail.ru</span>
+                </div>
+                <a class="aside-banner">
+                    <img src="assets/img/aside-banner.jpg" alt="commerc">
+                </a>
+            </aside>
         </div>
     </main>
     
