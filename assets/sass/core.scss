@@ -1,0 +1,182 @@
+@import 'fonts';
+@import 'colors';
+
+/* ======================== Заготовки и переменные ========================= */
+//@include center;       *** Центрование внутри flex блока ***
+@mixin center {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//@include columnBetween;       *** Растянуть в столбец внутри flex блока *** 
+@mixin columnBetween {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+//@include columnAround;       *** Растянуть в столбец внутри flex блока ***
+@mixin columnAround {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+//@include picture;      *** Стилизация круглого изображения ***
+@mixin picture {
+    @include center;
+    &-pic {
+        width: 100%;
+        border-radius: 50%;
+    }
+}
+//@include cube;         *** Квадратный блок относительно ширины ***
+@mixin cube {
+    &:after {
+        content: "";
+        padding-top: 100%;
+        float: left;
+    }
+}
+//@include img-inside;    *** Блок с изображение по центру ***
+@mixin img-inside {
+    @include center;
+    img {
+        width: auto;
+        max-width: 90%;
+    }
+}
+
+
+
+/* ============================== global css =============================== */
+* {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+h1 {
+    margin: 1em 0;
+    font-family: $OS-B;
+    font-size: 2em;
+}
+
+h2 {
+    text-transform: uppercase;
+    margin: 1em 0;
+    font-family: $OS-B;
+    font-size: 1.8em;
+}
+
+h3 {
+    text-transform: uppercase;
+    margin: 1em 0;
+    font-family: $OS-B;
+    font-size: 1.6em;
+    position: relative;
+    z-index: 200;
+}
+
+body {
+    @include fontSize12;
+    font-family: $OS-R;
+    background-image: linear-gradient(to bottom, #d8dee5 0%, #a8d0e3 100%);
+    
+    a {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+    }
+    
+    button {
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+    }
+}
+
+.white-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $cl_white-op;
+    z-index: 1;
+}
+
+.header {
+    padding-top: 15px;
+    background-image: url(../img/header_bgi.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 0;
+    
+    &-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 50px;
+        background-color: $cl_aquablue-op;
+        position: relative;
+        z-index: 2;
+        
+        &__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 33%;
+            
+            &-img {
+                width: 55px;
+                height: 55px;
+                border: 2px solid $cl_aquablue;
+                border-radius: 50%;
+                
+                img {
+                    width: 100%;
+                }
+            }
+            
+            &-title {
+                text-align: center;
+                color: $cl_white;
+                text-transform: uppercase;
+            }
+            
+            &:hover {
+                .header-list__item-title {
+                    font-family: $OS-SB;
+                }
+            }
+        }
+    }
+}
+
+
+@import 'media';
