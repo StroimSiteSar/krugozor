@@ -84,8 +84,12 @@ $extral: 1200px;
 @media screen and (min-width: $large) {
 }
 @media screen and (min-width: $extral) {
+    .aside {
+        width: 320px;
+        flex: 0 0 320px;
+    }
 }
 
 @media screen and (max-width: $medium) {
-      
+    
 }

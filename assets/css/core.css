@@ -307,8 +307,7 @@ body {
     font-family: "MontserratMedium", sans-serif;
     font-size: 1.33em; }
     .aside-contacts__phones {
-      margin: 2vw 0;
-      font-size: 1.5em; }
+      margin: 2vw 0; }
   .aside-banner {
     display: block; }
     .aside-banner img {
@@ -415,3 +414,9 @@ body {
       min-height: 150px; }
       .home-row__item-small:nth-child(2) {
         margin: 15px 0; } }
+@media screen and (min-width: 1200px) {
+  .aside {
+    width: 320px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 320px;
+            flex: 0 0 320px; } }
