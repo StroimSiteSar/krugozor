@@ -82,11 +82,22 @@ $extral: 1200px;
 }
 }
 @media screen and (min-width: $large) {
+    .news-item {
+        &__img {
+            max-height: 200px;
+        }
+    }
 }
 @media screen and (min-width: $extral) {
     .aside {
         width: 320px;
         flex: 0 0 320px;
+    }
+    
+    .news-item {
+        &__img {
+            max-height: 250px;
+        }
     }
 }
 

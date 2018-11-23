@@ -117,5 +117,75 @@ document.addEventListener('DOMContentLoaded', function () {
         topNavbar.classList.toggle('active');
     }
     
-    console.dir(topNavbarBtn);
+    //модалка
+    let modal = document.querySelector('.modal');
+    let modalClose = document.querySelector('.modal-close');
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        [...modal.children].forEach((item) => item.classList.remove('active'));
+    }
+    
+    modal.onclick = closeModal;
+    modalClose.onclick = closeModal;
+    
+    let convertingBtn = document.querySelector('.aside-converter');
+    let modalConverter = document.querySelector('.modal-converter');
+    
+    convertingBtn.onclick = function() {
+        modal.classList.add('active');
+        modalConverter.classList.add('active');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+        
+});
+
+
+//Я странице с экскурсией
+document.addEventListener('DOMContentLoaded', function () {
+    let triggers = document.querySelectorAll('.trigger-btn');
+    let switchSpaces = document.querySelectorAll('.excurs-content__item');
+    
+    for (let i=0; i<triggers.length; i++) {
+        console.log(triggers[i]);
+        triggers[i].num = i;
+        console.log(switchSpaces[i]);
+        switchSpaces[i].num = i;
+        
+        triggers[i].onclick = function() {
+            accordeonClass(triggers, triggers[i]);
+            accordeonClass(switchSpaces, switchSpaces[i]);
+        }
+    }
+    
+    
+    let gallery = document.querySelector('.excurs-content__desc-gallery');
+    let modal = document.querySelector('.modal');
+    let modalGallery = modal.querySelector('.modal-gallery');
+    let modalGalleryPull = document.querySelector('.modal-gallery__pull');
+    let modalGalleryPrev = modal.querySelector('.modal-gallery__arrow-left');
+    let modalGalleryNext = modal.querySelector('.modal-gallery__arrow-right');
+    
+    modalGallery.onclick = (event) => event.stopPropagation();
+    
+    gallery.onclick = function() {
+        modal.classList.add('active');
+        modalGallery.classList.add('active');
+        
+        let images = [...gallery.children];
+        
+        images.forEach(function(img){
+            let galleryItem = document.createElement('img');
+            galleryItem.setAttribute('src', img.src);
+            
+            modalGalleryPull.appendChild(galleryItem);
+        });
+        
+        modalGalleryPull.firstElementChild.classList.add('active');
+        
+        let gallerySlider = new EasySlider([...modalGalleryPull.children], 0, 3, modalGalleryPrev, modalGalleryNext)
+    }
+    
 });
