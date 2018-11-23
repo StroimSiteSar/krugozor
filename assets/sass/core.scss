@@ -56,7 +56,14 @@
         max-width: 90%;
     }
 }
-
+//@include full-abs-wrap;
+@mixin abs-full-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
 
 /* ============================== global css =============================== */
@@ -318,6 +325,34 @@ body {
             display: block;
             background-repeat: no-repeat;
             background-size: cover;
+            position: relative;
+            
+            &-wrapper {
+                @include abs-full-wrap;
+                background-color: $cl_black-op;
+            }
+            
+            &-info {
+                @include abs-full-wrap;
+                @include center;
+                flex-direction: column;
+                display: none;
+                
+                padding: 12.5%;
+                color: $cl_black;
+                text-shadow: 1px 2px 3px $cl_black-op;
+                font-family: $Ms-B;
+                font-size: 1.4em;
+            }
+            
+            &:hover {
+                .wrapper{
+                    display: none;
+                }
+                .info {
+                    display: flex;
+                }
+            }
             
             &-big {
                 height: 100%;
