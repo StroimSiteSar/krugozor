@@ -449,7 +449,6 @@ body {
 .home-slider {
   position: relative; }
   .home-slider__items {
-    height: 20vw;
     max-height: 250px;
     overflow: hidden; }
     .home-slider__items img {
