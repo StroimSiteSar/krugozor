@@ -434,9 +434,46 @@ body {
     .modal-gallery__pull img.active {
       display: block; }
 
+.open-btn {
+  width: 50%;
+  max-width: 240px;
+  height: 40px;
+  font-family: "MontserratRegular", sans-serif;
+  font-size: 1.5em;
+  background-color: #2da6c5;
+  color: #fff;
+  border: none;
+  margin-bottom: 15px; }
+
 /* ============================== homepage css ============================= */
-.home-slider img {
-  width: 100%; }
+.home-slider {
+  position: relative; }
+  .home-slider__items {
+    height: 20vw;
+    max-height: 250px;
+    overflow: hidden; }
+    .home-slider__items img {
+      display: none;
+      width: 100%; }
+      .home-slider__items img.active {
+        display: block; }
+  .home-slider__controls {
+    z-index: 10;
+    position: absolute;
+    bottom: 10%;
+    left: 2%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .home-slider__controls-dot {
+      width: 3vw;
+      height: 3vw;
+      max-width: 15px;
+      max-height: 15px;
+      border: 2px solid #fff;
+      margin: 0 5px; }
+      .home-slider__controls-dot.active {
+        background-color: #fff; }
 .home-row {
   margin-top: 15px;
   margin-bottom: 30px; }
@@ -537,6 +574,8 @@ body {
       width: 100%;
       text-align: right;
       color: #2da6c5; }
+.news .hidden-block {
+  display: none; }
 
 /* ============================== tourspage css ============================= */
 .tour-item {
@@ -570,6 +609,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }
+.tour .all-tours > div:nth-child(n+7) {
+  display: none; }
 
 /* ============================== contacts css ============================= */
 .contacts-info {

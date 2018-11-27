@@ -81,27 +81,54 @@ function EasySlider(items, number = 0, time, btnPrev, btnNext) {
         setInterval(() => this.display(), time*1000);
     }
 }
-//В данном счетчике используется:
-//1) кнопочное переключение, 2) возможность задать стартовое значение 3) только положительные числа
-//Подается: первичный итем, инпут отображения, и кнопочки итерации
-//На выходе получаем самый простой счетчик, который при необходимости может отдавать команду при изменении значения
-function EasyCounter(number, display, btnPlus, btnMinus) {
-    Counter.apply(this, [number]);
+
+/*
+    Dot slider:
+    slider = {
+        items: [], //Коллекция слайдов
+        container: document.querySelector(''),  //Контейнер для точек
+        dotClass: 'имя класса для точек',
+        timer: num, //время автопереключения слайдов в секундах
+        startWith: num //стартовый слайд
+    }
+*/
+
+function DotSlider(slider) {
+    let items = [...slider.items];
+    let time = +slider.timer || 0;
+    let number = slider.startWith || 0;
+    let dots = [];
+    
+    Slider.apply(this, [items.length, number]);
     const that = this;
-
-    btnPlus.onclick = function() {
-        that.plus();
-        that.display();
-    }
-
-    btnMinus.onclick = function() {
-        that.minus();
-        that.display();
-    }
-
+    
     this.display = function() {
-        (that.getCount() >= 0) ? display.value = that.getCount() : (display.value = '0', that.setCount(0));
-        display.onchange();
+        accordeonClass(items, items[that.show()]);
+        accordeonClass(dots, dots[that.show()]);
+    }
+    
+    function createDot(container, className, number) {
+        let dot = document.createElement('div');
+        dot.classList.add(className);
+        
+        dot.onclick = function(){
+            that.setCount(number);
+            that.display();
+        }
+        
+        dots.push(dot);
+        
+        container.appendChild(dot);
+        
+    }
+    
+    for (let i=0; i<items.length; i++) {
+        createDot(slider.container, slider.dotClass, i);
+    }
+    
+    if(time) {
+        this.timer(time);
+        setInterval(() => this.display(), time*1000);
     }
 }
 
@@ -138,20 +165,110 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+//Для главной страницы
 document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.home-slider')){
+        const homeSlider = new DotSlider({
+            items: document.querySelectorAll('.home-slider__items img'),
+            container: document.querySelector('.home-slider__controls'),
+            dotClass: 'home-slider__controls-dot',
+            timer: 3,
+            startWith: 0
+        });
+        homeSlider.display();
+    }
+});
+
+//Для страницы новостей
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.news')){
+        let newsWrapper = document.querySelector('.all-news');
+        let allNews = [...newsWrapper.children];
         
+        function ajaxGet(url, callback) {
+            var request = new XMLHttpRequest();
+            
+            request.onreadystatechange = function() {
+                if(request.readyState == 4 && request.status){
+                    callback(request.responseText)
+                }
+            }
+            
+            request.open('GET', url);
+            request.send();
+        }
+        
+        
+        //функция создания тэга
+        function addNode(tag, insideHtml, tagClass = [], ...newAttribute){
+            let newTag = document.createElement(tag);
+            newTag.innerHTML = insideHtml;
+            if (!tagClass == []) {
+                newTag.classList.add(...tagClass);
+            }
+            if (newAttribute) {
+                [...newAttribute].forEach(function(attr){
+                    let attrParams = attr.split('=');
+                    newTag.setAttribute(attrParams[0], attrParams[1]);
+                })
+            }
+
+            return newTag;
+        }
+
+        function createArticle(article){
+            let gridElement = addNode('div', '', ["col-sm-6","col-lg-12","col-xl-6"]);
+            let newItem = addNode('div', '', ["news-item"]);
+            let imgWrap = addNode('div', '', ["news-item__img"]);
+            let textWrap = addNode('div', '', ["news-item__text"]);
+            
+            gridElement.appendChild(newItem);
+            newItem.appendChild(imgWrap);
+            newItem.appendChild(textWrap);
+            imgWrap.appendChild(addNode('img', '', '', `src=${article.img}`));
+            textWrap.appendChild(addNode('h3', article.title, ["news-item__text-title"]));
+            textWrap.appendChild(addNode('p', article.text, ["news-item__text-desc"]));
+            textWrap.appendChild(addNode('a', 'подробнее', ["news-item__text-link"], `href=${article.link}`));
+            
+            return gridElement;
+        }
+        
+        let openBtn = document.querySelector('.news-open-all');
+        openBtn.onclick = function() {
+            for(let i=0; i<6; i++){
+                ajaxGet('ip.php', function(data){
+                    let parsingArticle = JSON.parse(data);
+                    newsWrapper.appendChild(createArticle(parsingArticle));
+                });
+            }
+        }
+    }
 });
 
 
-//Я странице с экскурсией
+//Для страницы с турами
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.all-tours')){
+        let toursWrapper = document.querySelector('.all-tours');
+        let allTours = [...toursWrapper.children];
+        let openBtn = document.querySelector('.tour-open-all');
+        
+        openBtn.onclick = function() {
+            allTours.forEach(function(item) {
+                item.style.display = 'block';
+            });
+            this.style.display = 'none';
+        }
+    }
+});
+
+//Для странице с экскурсией
 document.addEventListener('DOMContentLoaded', function () {
     let triggers = document.querySelectorAll('.trigger-btn');
     let switchSpaces = document.querySelectorAll('.excurs-content__item');
     
     for (let i=0; i<triggers.length; i++) {
-        console.log(triggers[i]);
         triggers[i].num = i;
-        console.log(switchSpaces[i]);
         switchSpaces[i].num = i;
         
         triggers[i].onclick = function() {
@@ -170,22 +287,23 @@ document.addEventListener('DOMContentLoaded', function () {
     
     modalGallery.onclick = (event) => event.stopPropagation();
     
-    gallery.onclick = function() {
-        modal.classList.add('active');
-        modalGallery.classList.add('active');
-        
-        let images = [...gallery.children];
-        
-        images.forEach(function(img){
-            let galleryItem = document.createElement('img');
-            galleryItem.setAttribute('src', img.src);
-            
-            modalGalleryPull.appendChild(galleryItem);
-        });
-        
-        modalGalleryPull.firstElementChild.classList.add('active');
-        
-        let gallerySlider = new EasySlider([...modalGalleryPull.children], 0, 3, modalGalleryPrev, modalGalleryNext)
+    if(gallery) {
+        gallery.onclick = function() {
+            modal.classList.add('active');
+            modalGallery.classList.add('active');
+
+            let images = [...gallery.children];
+
+            images.forEach(function(img){
+                let galleryItem = document.createElement('img');
+                galleryItem.setAttribute('src', img.src);
+
+                modalGalleryPull.appendChild(galleryItem);
+            });
+
+            modalGalleryPull.firstElementChild.classList.add('active');
+
+            let gallerySlider = new EasySlider([...modalGalleryPull.children], 0, 3, modalGalleryPrev, modalGalleryNext)
+        }
     }
-    
 });

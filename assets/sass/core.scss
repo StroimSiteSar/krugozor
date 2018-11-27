@@ -377,12 +377,56 @@ body {
     }
 }
 
+.open-btn {
+    width: 50%;
+    max-width: 240px;
+    height: 40px;
+    font-family: $Ms-R;
+    font-size: 1.5em;
+    background-color: $cl_aquablue;
+    color: $cl_white;
+    border: none;
+    margin-bottom: 15px; 
+}
+
 /* ============================== homepage css ============================= */
 
 .home {
     &-slider {
-        img {
-            width: 100%;
+        position: relative;
+        &__items {
+            height: 20vw;
+            max-height: 250px;
+            overflow: hidden;
+            
+            img {
+                display: none;
+                width: 100%;
+                
+                &.active {
+                    display: block;
+                }
+            }
+        }
+        &__controls {
+            z-index: 10;
+            position: absolute;
+            bottom: 10%;
+            left: 2%;
+            display: flex;
+            
+            &-dot {
+                width: 3vw;
+                height: 3vw;
+                max-width: 15px;
+                max-height: 15px;
+                border: 2px solid $cl_white;
+                margin: 0 5px;
+                
+                &.active {
+                    background-color: $cl_white;
+                }
+            }
         }
     }
     
@@ -485,6 +529,10 @@ body {
             }
         }
     }
+    
+    .hidden-block {
+        display: none;
+    }
 }
 
 /* ============================== tourspage css ============================= */
@@ -513,6 +561,10 @@ body {
             background-size: cover;
             background-position: center;
         }
+    }
+    
+    .all-tours>div:nth-child(n+7) {
+        display: none;
     }
 }
 
